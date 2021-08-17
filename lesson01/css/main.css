@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*
+    Свойства width и height включают контент, внутренний отступ и границы,
+    но НЕ включают внешний отступ (margin)
+    */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Lato, sans-serif, "Times New Roman", Verdana, serif;
+    font-size: calc(0.5em + 1vw);
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    /*outline: 1px solid red;*/
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Верстка заголовка */
+
+div.header {
+    background-color: #222222;
+    color: white;
+}
+
+div.header-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+div.header-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+div.image-cart {
+    position: relative;
+    width: 45px;
+    height: 30px;
+}
+
+span.count {
+    position: absolute;
+    right: 8px;
+    top: -1px;
+    font-size: 0.9rem;
+    width: 1em;
+    height: 1em;
+    background: #f16d7f;
+    border-radius: 50%;
+}
+
+/* Breadcrumbs */
+
+div.breadcrumbs {
+    min-height: 75px;
+    background-color: #F1E4E6;
+}
+
+div.breadcrumbs-wrap {
+    min-height: inherit;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.breadcrumbs-text {
+    text-transform: uppercase;
+}
+
+div.breadcrumbs-text > h1 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #F16D7F;
+}
+
+div.breadcrumbs-main {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+div.breadcrumbs-main  > a:not(:last-child) {
+    color: #5d5d5d;
+}
+
+div.breadcrumbs-main  > a:last-child {
+    color: #F16D7F;
+}
+
+/* Верстка нижней части футера */
+
+div.footer-bottom {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+div.footer-bottom-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+p.footer-bottom-text {
+    margin: 1.5em 0;
+    font-size: 1rem;
+}
+
+div.list-icon-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+div.icon-footer {
+    background-color: #FFFFFF;
+    /*padding: 0.5em;*/
+    min-width: 1.2em;
+    min-height: 1.2em;
+}
+
+div.icon-footer:not(:last-child) {
+    margin-right: 0.5em;
+}
+
+/**/

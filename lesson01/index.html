@@ -1,16 +1,94 @@
 <!doctype html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeekBrains</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-<h3>Домашнее задание 1</h3>
+<!-- Шапка сайта -->
+<header>
+    <div class="header">
+        <div class="container header-wrap">
+            <div class="header-left">
+                <a href="index.html">
+                    <img src="../images/logo.svg" alt="picture" />
+                </a>
+                &nbsp;&nbsp;
+                <img src="../images/search.svg" alt="picture" />
+            </div>
+            <div class="header-right">
+                <img src="../images/menu.svg" alt="picture" />
+                &nbsp;&nbsp;
+                <a href="registration.html">
+                    <img src="../images/user.svg" alt="picture" />
+                </a>
+                &nbsp;&nbsp;
+                <div class="image-cart">
+                    <a href="cart.html">
+                        <img src="../images/cart.svg" alt="picture" />
+                        <span class="count text-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- END: div class="container header-wrap" -->
+    </div>
+    <!-- END: div class="header" -->
+</header>
+
+<!-- Основной блок -->
+<main>
+    <!-- Breadcrumbs -->
+    <aside>
+        <div class="breadcrumbs">
+            <div class="container breadcrumbs-wrap">
+                <div class="breadcrumbs-text">
+                    <h1>Домашнее задание 1</h1>
+                </div>
+                <div class="breadcrumbs-main">
+                    <!--
+                    <a href="index.html">home</a> /
+                    <a href="#">men</a> /
+                    <a href="#">new arrivals</a>
+                    -->
+                </div>
+            </div>
+            <!-- END: div class="container breadcrumbs-wrap" -->
+        </div>
+        <!-- END: div class="breadcrumbs" -->
+    </aside>
+</main>
+
+<!-- Подвал сайта -->
+<footer>
+    <div class="footer-bottom">
+        <div class="container footer-bottom-wrap">
+            <p class="footer-bottom-text">&copy; 2021 Brand All Rights Reserved</p>
+            <div class="list-icon-footer">
+                <div class="icon-footer text-center">
+                    <img src="../images/iconFacebook.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconInstagram.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconPinterest.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconTwitter.svg" alt="picture" />
+                </div>
+            </div>
+        </div>
+        <!-- END: div class="container footer-bottom-wrap" -->
+    </div>
+    <!-- END: div class="footer-bottom" -->
+</footer>
 
 <script type="module">
     import {Lesson01} from './js/script01.js';
     Lesson01.run();
-  </script>
+</script>
 </body>
 </html>
