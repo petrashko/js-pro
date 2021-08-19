@@ -11,6 +11,14 @@
 body {
     font-family: Lato, sans-serif, "Times New Roman", Verdana, serif;
     font-size: calc(0.5em + 1vw);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    /* footer всегда внизу */
+    flex: 1;
 }
 
 a {
@@ -112,6 +120,103 @@ div.breadcrumbs-main  > a:last-child {
     color: #F16D7F;
 }
 
+/* Верстка блока с карточками товаров */
+
+section.products-section {
+    margin: 2em 0;
+}
+
+div.products {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+div.product-items {
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 1.5em 0;
+}
+
+/* Карточка товара */
+
+div.product-card {
+    position: relative;
+    width: 360px;
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 0.9rem;
+}
+
+h3.product-name {
+    margin: 15px 0 15px 30px;
+}
+
+h3.product-name a {
+    color: #000000;
+    font-size: 15px;
+}
+
+p.product-description {
+    margin-left: 30px;
+    padding-right: 25px;
+    color: #5d5d5d;
+    font-size: 13px;
+}
+
+strong.product-price {
+    margin: 15px 0 15px 30px;
+    color: #f16d7f;
+    font-size: 15px;
+}
+
+div.product-img-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 360px;
+    height: 420px;
+    background-color: rgba(58, 56, 56, 0.83);
+    opacity: 0;
+}
+
+div.product-card:hover div.product-img-overlay {
+    opacity: 1;
+}
+
+button.btn-add-card {
+    cursor: pointer;
+    padding: 10px 15px;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+/* ---------- */
+
+/* Верстка кнопки "Корзина" */
+
+button.cart-btn {
+    cursor: pointer;
+    /*margin-top: 0.5em;*/
+    padding: 0.8em 3em;
+    border: 1px solid #FF6A6A;
+    color: #F26376;
+    text-transform: capitalize;;
+}
+
+/* Анимация кнопки при наведении мыши */
+
+button.cart-btn:hover {
+    animation: shake 1.5s linear;
+}
+
 /* Верстка нижней части футера */
 
 div.footer-bottom {
@@ -147,6 +252,45 @@ div.icon-footer {
 
 div.icon-footer:not(:last-child) {
     margin-right: 0.5em;
+}
+
+/* Создание эффекта тряски */
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateX(-0.4em);
+    }
+    20%,
+    40%,
+    60% {
+        transform: translateX(0.4em);
+    }
+    80% {
+        transform: translateX(0.3em);
+    }
+    90% {
+         transform: translateX(-0.3em);
+    }
+}
+
+/* Адаптивная верстка */
+
+@media (max-width: 1100px) {
+    div.product-items {
+        justify-content: center;
+    }
+
+    div.product-items > article:nth-child(odd) {
+        /*outline: 1px solid red;*/
+        margin-right: 2px;
+    }
 }
 
 /**/
