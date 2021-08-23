@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: Lato, sans-serif, "Times New Roman", Verdana, serif;
+    font-family: sans-serif, "Times New Roman", Verdana, serif;
     font-size: calc(0.5em + 1vw);
     display: flex;
     flex-direction: column;

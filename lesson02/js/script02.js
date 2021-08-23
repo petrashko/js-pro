@@ -1,8 +1,7 @@
 "use strict"
 
-
 /**
- * Класс со списком товаров
+ * Класс: список товаров
  */
 class ProductList {
     constructor(container='.product-items') {
@@ -36,10 +35,32 @@ class ProductList {
             divProducts.insertAdjacentHTML("beforeend", item.render());
         }
     }
+
+    /**
+     * Task 2
+     * Метод вычисляет суммарную стоимость всех товаров
+     */
+    calculateTotalCost() {
+        // Вычислить стоимость всех товаров
+        let totalCost = this.goods.reduce((total, item, index, srcList) => {
+            return total + item.price;
+        }, 0);
+
+        return totalCost;
+    }
+
+    /**
+     * Метод для вывода общей стоимости всех товаров
+     */
+    renderTotalCost() {
+        const divTotalCost = document.querySelector('.total-cost');
+        const info = `Общая стоимость всех товаров: ${this.calculateTotalCost()}`;
+        divTotalCost.insertAdjacentHTML("beforeend", info);
+    }
 }
 
 /**
- * Класс товара
+ * Класс: товара
  */
 class ProductItem {
     //constructor(product, img='https://via.placeholder.com/200x150') {
@@ -75,6 +96,55 @@ class ProductItem {
     }
 }
 
+// Task 1
+/**
+ * Класс: корзины товаров
+ */
+class Cart {
+    constructor() {
+        // Массив объектов класса ProductInCart в корзине
+        this.productList = [];
+    }
+
+    addProduct(productId) {
+    }
+
+    removeProduct(productId) {
+    }
+
+    /**
+     * Метод вычисляет суммарную стоимость всех товаров в корзине
+     */
+    calculateTotalCost() {
+        // Вычислить стоимость всех товаров в корзине
+        let totalCost = this.productList.reduce((total, item, index, srcList) => {
+            return total + item.price * item.amount;
+        }, 0);
+
+        return totalCost;
+    }
+
+    /**
+     * Метод удаляет все товары из корзины
+     */
+    clear() {
+        this.productList.splice(0, this.productList.length);
+    }
+}
+
+/**
+ * Класс: элемент в корзине товаров
+ */
+class ProductInCart {
+    constructor() {
+        this.id = null;
+        this.title = null; // Необязательно
+        this.price = null; // Необязательно
+        // Количество конкретного товара в корзине
+        this.amount = 0;
+    }
+}
+
 //*******************************************************************
 
 const Lesson02 = {
@@ -84,6 +154,8 @@ const Lesson02 = {
         let productList = new ProductList('.product-items');
         // Выводим список товаров на HTML-страницу
         productList.render();
+        // Выводим общую стоимость всех товаров
+        productList.renderTotalCost();
     }
 }
 
