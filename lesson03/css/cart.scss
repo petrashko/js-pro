@@ -1,0 +1,209 @@
+@import "modules/_const";
+@import "modules/_mixins";
+
+section.cart-main {
+    /*outline: 1px solid blue;*/
+    @include flexRow(space-between, flex-start);
+    margin-top: 3rem;
+}
+
+div.cart-main-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+div.cart-main-right {
+    //outline: 1px solid red;
+    width: 50%;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+div.cart-item-list {
+    width: 100%;
+}
+
+.cart-item {
+    min-height: $cartItemMinHeight;
+    max-height: $cartItemMaxHeight;
+    min-width: $cartItemMinWidth;
+    max-width: $cartItemMaxWidth;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+    &-image {
+        margin-right: 0.25rem;
+        //@include flexFunc(0, 1, 30%);
+    }
+
+    &-image img {
+        height: $cartItemMaxHeight;
+    }
+
+    &-info {
+        max-width: 10rem;
+        margin-top: 0.5rem;
+        @include marginLeft(0.25rem);
+        //@include flexFunc(2, 1, 30%);
+
+        & h3 {
+            margin-bottom: 4rem;
+            font-size: 1rem;
+            color: #222222;
+        }
+
+        & p {
+            @include cartItemInfo ($color575757);
+            margin-top: 0.5rem;
+        }
+
+        & input {
+            @include cartItemInfo ($color575757);
+            width: 2rem;
+            text-align: center;
+            margin-left: 0.9rem;
+            -moz-appearance: textfield;
+        }
+
+        & input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        .cart-item-price {
+            color: $colorF16D7F;
+        }
+    }
+
+    & > .div-btn-close {
+        margin-left: auto;
+    }
+
+    &-btn-close {
+        margin: $buttonCloseMargin;
+        border: none;
+        background: none;
+    }
+    
+    &-btn-close > svg {
+        fill: $color575757;
+    }
+}
+
+.shopping-buttons {
+    @include flexRow(space-between, center);
+    width: 100%;
+    margin: 3rem 0;
+
+    &-btn {
+        display: block;
+        font-size: 0.8rem;
+        color: $color222222;
+        border: 1px solid $colorA4A4A4;
+        padding: 1rem 2rem;
+        background: none;
+        text-transform: uppercase;
+    }
+}
+
+.order-form {
+    width: 100%;
+
+    &-main {
+        height: $cartItemMaxHeight;
+        margin-bottom: 2rem;
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+
+        &-caption {
+            font-size: 1.1rem;
+            font-weight: normal;
+            color: $color222222;
+            text-transform: uppercase;
+        }
+
+        &-country {
+            padding: 0.7rem;
+            font-size: 0.8rem;
+            color: #b1b1b1;
+            border: 1px solid $colorA4A4A4;
+        }
+
+        &-zip {
+            padding: 0.7rem;
+            font-size: 0.8rem;
+            color: $color222222;
+            border: 1px solid $colorA4A4A4;
+        }
+
+        &-submit {
+            align-self: flex-start;
+            display: block;
+            font-size: 0.8rem;
+            color: $colorA4A4A4;
+            border: 1px solid $colorA4A4A4;
+            padding: 1rem 2rem;
+            background: none;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.order-total {
+    width: 100%;
+    min-height: $orderTotalMinHeight;
+    padding: 2rem;
+    background-color: $colorF5F3F3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    &-sub {
+        font-size: $fontSizeBasis - 0.2;
+        color: $colorA4A4A4;
+    }
+
+    &-grand {
+        font-size: $fontSizeBasis;
+        color: $colorA4A4A4;
+    }
+
+    & p {
+        text-transform: uppercase;
+    }
+
+    & p > span {
+        margin-left: 2rem;
+    }
+
+    & > hr {
+        color: $colorE2E2E2;
+        margin: 0.25rem auto 0.25rem auto;
+        width: 95%;
+    }
+
+    &-btn {
+        display: block;
+        width: 95%;
+        align-self: center;
+        font-size: $fontSizeBasis;
+        padding: 1rem 2rem;
+        color: #ffffff;
+        background-color: $colorF16D7F;
+        border: none;
+        text-transform: uppercase;
+    }
+}

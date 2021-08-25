@@ -1,0 +1,19 @@
+@mixin flexFunc($grow, $shrink, $basis: auto) {
+    flex: $grow $shrink $basis;
+}
+
+@mixin flexRow ($justifyContent, $alignItems) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+@mixin marginLeft ($left) {
+    margin-left: $left;
+}
+
+@mixin cartItemInfo ($clr) {
+    font-size: 0.8rem;
+    color: $clr;
+}

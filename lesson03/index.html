@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekBrains</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<!-- Шапка сайта -->
+<header>
+    <div class="header">
+        <div class="container header-wrap">
+            <div class="header-left">
+                <a href="index.html">
+                    <img src="../images/logo.svg" alt="picture" />
+                </a>
+                &nbsp;&nbsp;
+                <img src="../images/search.svg" alt="picture" />
+            </div>
+            <div class="header-right">
+                <img src="../images/menu.svg" alt="picture" />
+                &nbsp;&nbsp;
+                <a href="registration.html">
+                    <img src="../images/user.svg" alt="picture" />
+                </a>
+                &nbsp;&nbsp;
+                <div class="image-cart">
+                    <a href="cart.html">
+                        <img src="../images/cart.svg" alt="picture" />
+                        <span id="basket-goods-count" class="count text-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- END: div class="container header-wrap" -->
+    </div>
+    <!-- END: div class="header" -->
+</header>
+
+<!-- Основной блок -->
+<main>
+    <!-- Breadcrumbs -->
+    <aside>
+        <div class="breadcrumbs">
+            <div class="container breadcrumbs-wrap">
+                <div class="breadcrumbs-text">
+                    <h1>Домашнее задание 3</h1>
+                </div>
+                <div class="breadcrumbs-main">
+                    <!--
+                    <a href="index.html">home</a> /
+                    <a href="#">men</a> /
+                    <a href="#">new arrivals</a>
+                    -->
+                </div>
+            </div>
+            <!-- END: div class="container breadcrumbs-wrap" -->
+        </div>
+        <!-- END: div class="breadcrumbs" -->
+    </aside>
+
+    
+    <!-- Блок с карточками товаров -->
+    <section class="products-section">
+        <div class="container products">
+            <!-- Блок для вывода суммарной стоимость всех товаров -->
+            <div class="text-center total-cost"></div>
+            <div class="product-items">
+                <!-- Здесь динамически добавляются карточки с товаром -->
+            </div>
+
+            <!--
+            <button class="cart-btn" type="button">Корзина</button>
+            -->
+        </div>
+        <!-- END: div class="container products" -->
+    </section>
+</main>
+
+<!-- Подвал сайта -->
+<footer>
+    <div class="footer-bottom">
+        <div class="container footer-bottom-wrap">
+            <p class="footer-bottom-text">&copy; 2021 Brand All Rights Reserved</p>
+            <div class="list-icon-footer">
+                <div class="icon-footer text-center">
+                    <img src="../images/iconFacebook.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconInstagram.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconPinterest.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconTwitter.svg" alt="picture" />
+                </div>
+            </div>
+        </div>
+        <!-- END: div class="container footer-bottom-wrap" -->
+    </div>
+    <!-- END: div class="footer-bottom" -->
+</footer>
+
+<script type="module">
+    import {ProductList, ProductItem} from './js/main03.js';
+
+    console.log('Lesson 3');
+    console.log();
+
+    const productList = new ProductList('.product-items');
+</script>
+<!-- -->
+<script type="module">
+    import {Cart, ProductInCart} from './js/cart03.js';
+    const cart = new Cart(null);
+</script>
+</body>
+</html>

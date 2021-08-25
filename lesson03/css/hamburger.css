@@ -1,0 +1,10 @@
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.orderInfo {
+    font-size: calc(0.5em + 1vw);
+    margin-top: 3rem;
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekBrains</title>
+    <link rel="stylesheet" type="text/css" href="css/hamburger.css">
+</head>
+<body>
+<h3>Заказ гамбургера</h3>
+
+<form name="order" method="post" action="#">
+    <fieldset>
+        <legend>Выбрать гамбургер:</legend>
+        <label>Размер:</label>
+        <input type="radio" id="size-big" name="size" value="big" checked/><label for="size-big">Большой</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="size-small" name="size" value="small" /><label for="size-small">Маленький</label>
+        <br/><br/>
+        <label for="ingredient">Начинка:</label>
+        <select id="ingredient" name="ingredient">
+            <option value="cheese" selected>С сыром</option>
+            <option value="salad">С салатом</option>
+            <option value="potato" >С картофелем</option>
+        </select>
+        <br/><br/>
+        <input type="checkbox" id="flavoring" name="flavoring"/><label for="flavoring">Посыпать приправой</label>
+        &nbsp;&nbsp;
+        <input type="checkbox" id="mayo" name="mayo" checked/><label for="mayo">Полить майонезом</label>
+        <br/><br/>
+        <input type="submit" value="Заказать" disabled />
+    </fieldset>
+</form>
+
+<div class="text-center orderInfo"></div>
+
+<script type="module">
+    import {Hamburger} from './js/hamburger.js';
+    const hamburger = new Hamburger('order');
+</script>
+</body>
+</html>
