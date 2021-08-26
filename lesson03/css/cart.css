@@ -127,6 +127,7 @@ div.cart-item-list {
 
 .cart-item-btn-close {
   margin: 0.5rem;
+  cursor: pointer;
   border: none;
   background: none;
 }
@@ -155,6 +156,7 @@ div.cart-item-list {
 
 .shopping-buttons-btn {
   display: block;
+  cursor: pointer;
   font-size: 0.8rem;
   color: #222222;
   border: 1px solid #A4A4A4;

@@ -90,6 +90,7 @@ div.cart-item-list {
 
     &-btn-close {
         margin: $buttonCloseMargin;
+        cursor: pointer;
         border: none;
         background: none;
     }
@@ -106,6 +107,7 @@ div.cart-item-list {
 
     &-btn {
         display: block;
+        cursor: pointer;
         font-size: 0.8rem;
         color: $color222222;
         border: 1px solid $colorA4A4A4;

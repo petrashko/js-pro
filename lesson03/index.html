@@ -105,16 +105,20 @@
 
 <script type="module">
     import {ProductList, ProductItem} from './js/main03.js';
+    import {Cart, ProductInCart} from './js/cart03.js';
 
     console.log('Lesson 3');
     console.log();
+    
+    // Ничего другого не придумал!!!
+    if (!window.cart) {
+        const cart = new Cart('.cart-item-list');
+        cart.getProductsFromServer();
+        
+        window.cart = cart;
+    }
 
     const productList = new ProductList('.product-items');
-</script>
-<!-- -->
-<script type="module">
-    import {Cart, ProductInCart} from './js/cart03.js';
-    const cart = new Cart(null);
 </script>
 </body>
 </html>

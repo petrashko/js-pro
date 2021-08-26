@@ -70,7 +70,7 @@
             </div>
             <!-- Блок с двумя кнопками -->
             <div class="shopping-buttons">
-                <button class="shopping-buttons-btn">Очистить корзину</button>
+                <button class="shopping-buttons-btn clear-cart-btn">Очистить корзину</button>
                 <button class="shopping-buttons-btn">CONTINUE SHOPPING</button>
             </div>
         </div>
@@ -138,19 +138,23 @@
     <!-- END: div class="footer-bottom" -->
 </footer>
 
-<!-- ВРЕМЕННО: для тестирования методов корзины -->
 <script type="module">
     import {ProductList, ProductItem} from './js/main03.js';
-    const productList = new ProductList('.product-items');
-</script>
-<!-- -->
-<script type="module">
     import {Cart, ProductInCart} from './js/cart03.js';
 
     console.log('Lesson 3');
     console.log();
+    
+    // Ничего другого не придумал!!!
+    if (!window.cart) {
+        const cart = new Cart('.cart-item-list');
+        cart.getProductsFromServer();
+        
+        window.cart = cart;
+    }
 
-    const cart = new Cart('.cart-item-list');
+    // ВРЕМЕННО: для тестирования методов корзины
+    const productList = new ProductList('.product-items');
 </script>
 </body>
 </html>

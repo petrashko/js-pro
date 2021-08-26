@@ -1,6 +1,6 @@
 "use strict"
 
-import {Cart, ProductInCart} from './cart03.js';
+//import {Cart, ProductInCart} from './cart03.js';
 
 //const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
@@ -18,6 +18,9 @@ class ProductList {
                 this.render();
                 // Выводим общую стоимость всех товаров
                 this.renderTotalCost();
+
+                // Навешать обработчики на кнопки "Добавить в корзину"
+                this.createHandlersAddToCart()
             })
             .catch(error => {
                 console.log(error);
@@ -47,18 +50,6 @@ class ProductList {
     }
 
     /**
-     * Метод для вывода списка товаров
-     */
-    render() {
-        const divProducts = document.querySelector(this.container);
-
-        for (let product of this.goods) {
-            const item = new ProductItem(product);
-            divProducts.insertAdjacentHTML("beforeend", item.render());
-        }
-    }
-
-    /**
      * Метод вычисляет суммарную стоимость всех товаров
      */
     calculateTotalCost() {
@@ -77,6 +68,54 @@ class ProductList {
         const divTotalCost = document.querySelector('.total-cost');
         const info = `Общая стоимость всех товаров: ${this.calculateTotalCost()}`;
         divTotalCost.insertAdjacentHTML("beforeend", info);
+    }
+
+    /**
+     * Метод для вывода списка товаров
+     */
+     render() {
+        const divProducts = document.querySelector(this.container);
+
+        for (let product of this.goods) {
+            const item = new ProductItem(product);
+            divProducts.insertAdjacentHTML("beforeend", item.render());
+        }
+    }
+
+    /**
+     * Метод создает обработчики для кнопок "Добавить в корзину"
+     */
+    createHandlersAddToCart() {
+        // div-блок с каталогом товаров
+        const divProducts = document.querySelector(this.container);
+        // Список кнопок "Добавить в корзину" для каждого товара
+        const buttonList = divProducts.querySelectorAll('.btn-add-card');
+        //
+        for (let btn of buttonList) {
+            btn.addEventListener('click', (ev) => { this.handlerAddToCart(ev) });
+        }
+    }
+
+    /**
+     * Обработчик для кнопок "Добавить в корзину"
+     */
+    handlerAddToCart(ev) {
+        ev.preventDefault();
+
+        const productId = ev.target.dataset.productId;
+        //console.log(productId);
+        // Найти товар в каталоге товаров
+        let product = this.goods.find((item, index, srcList) => {
+            return parseInt(item.id_product) === parseInt(productId);
+        });
+
+        // Добавить товар в корзину
+        window.cart.addProduct(product);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
 }
 
