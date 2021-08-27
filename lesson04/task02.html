@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekBrains</title>
+    <link rel="stylesheet" type="text/css" href="css/task02.css">
+</head>
+<body>
+<h3>Валидация формы</h3>
+
+<form name="contacts" method="post" action="#">
+    <fieldset>
+        <legend>Контакты:</legend>
+
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name"/>
+        <p class="error-name invisible">Имя содержит только буквы</p>
+        
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone"/>
+        <p class="error-phone invisible">Телефон имеет вид +7(000)000-0000</p>
+        
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" name="email"/>
+        <p class="error-email invisible">Недопустимый E-mail</p>
+        
+        <label for="feature">О себе:</label><br/>
+        <textarea id="feature" name="feature"></textarea>
+        
+        <br/><br/>
+        <input type="submit" value="Отправить"/>
+    </fieldset>
+</form>
+
+<div class="text-center info"></div>
+
+<script>
+const form = document.forms['contacts'];
+
+form.name.addEventListener('focus', (ev) => handlerFocus(ev));
+form.phone.addEventListener('focus', (ev) => handlerFocus(ev));
+form.email.addEventListener('focus', (ev) => handlerFocus(ev));
+
+form.addEventListener('submit', (ev) => handlerSubmit(ev));
+
+const handlerSubmit = (ev) => {
+    ev.preventDefault();
+    console.log('Валидация формы');
+    let err = false;
+
+    const name = form.name.value.trim();
+    form.name.value = name;
+    const phone = form.phone.value.trim();
+    form.phone.value = phone;
+    const email = form.email.value.trim();
+    form.email.value = email;
+
+    const regName = new RegExp('[a-zA-Zа-яА-ЯёЁ]+', 'iu');
+    let testMatch = name.match(regName);
+    //console.log(testMatch);
+    if ((null === testMatch) || (testMatch[0].length !== name.length)) {
+        err = true;
+        form.name.classList.add('error-input');
+        document.querySelector('.error-name').classList.remove('invisible');
+    }
+    else {
+        hideError(form.name);
+    }
+
+    const regPhone = /^\+7\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$/;
+    testMatch = phone.match(regPhone);
+    //console.log(testMatch);
+    if ((null === testMatch) || (testMatch[0].length !== phone.length)) {
+        err = true;
+        form.phone.classList.add('error-input');
+        document.querySelector('.error-phone').classList.remove('invisible');
+    }
+    else {
+        hideError(form.phone);
+    }
+
+    const regEmail = /^[a-zа-я0-9._-]+@[a-z0-9-_]+\.[a-z0-9]{2,4}$/iu;
+    testMatch = email.match(regEmail);
+    //console.log(testMatch);
+    if ((null === testMatch) || (testMatch[0].length !== email.length)) {
+        err = true;
+        form.email.classList.add('error-input');
+        document.querySelector('.error-email').classList.remove('invisible');
+    }
+    else {
+        hideError(form.email);
+    }
+
+    const divInfo = document.querySelector('.info');
+    if (true === err) {
+        divInfo.innerHTML = '';
+        return;
+    }
+
+    divInfo.textContent = 'Данные отправлены на сервер';
+}
+
+const handlerFocus = (ev) => {
+    hideError(ev.target);
+}
+
+const hideError = (inputElement) => {
+    const inputName = inputElement.getAttribute('name');
+    const pError = document.querySelector(`.error-${inputName}`);
+
+    inputElement.classList.remove('error-input');
+    pError.classList.add('invisible')
+}
+</script>
+</body>
+</html>

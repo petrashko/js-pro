@@ -36,6 +36,22 @@ One: 'Sure. Bye.'`
 
     const divSrc = document.getElementById('src-text');
     divSrc.innerHTML = `<pre>${text}</pre>`;
+
+    //***************************************************************
+
+    const regExp1 = new RegExp("'", 'g');
+    const text1 = text.replace(regExp1, '"');
+
+    const divTask1 = document.getElementById('task1-text');
+    divTask1.innerHTML = `<pre>${text1}</pre>`;
+
+    //***************************************************************
+
+    // Как работает ваще не понял. Нашел методом научного тыка
+    const text2 = text.replace(/\B'/g, '"');
+
+    const divTask2 = document.getElementById('task2-text');
+    divTask2.innerHTML = `<pre>${text2}</pre>`;
 </script>
 </body>
 </html>
