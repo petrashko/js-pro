@@ -11,6 +11,9 @@
 body {
     font-family: sans-serif, "Times New Roman", Verdana, serif;
     font-size: calc(0.5em + 1vw);
+}
+
+div#vue-app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
