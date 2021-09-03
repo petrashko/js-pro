@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekBrains</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
+</head>
+<body>
+<!-- Шапка сайта -->
+<header>
+    <div class="header">
+        <div class="container header-wrap">
+            <div class="header-left">
+                <a href="index.html">
+                    <img src="../images/logo.svg" alt="picture" />
+                </a>
+                &nbsp;&nbsp;
+                <img src="../images/search.svg" alt="picture" />
+            </div>
+            <div class="header-right">
+                <img src="../images/menu.svg" alt="picture" />
+                &nbsp;&nbsp;
+                <a href="registration.html">
+                    <img src="../images/user.svg" alt="picture" />
+                </a>
+                &nbsp;&nbsp;
+                <div class="image-cart">
+                    <a href="cart.html">
+                        <img src="../images/cart.svg" alt="picture" />
+                        <span id="basket-goods-count" class="count text-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- END: div class="container header-wrap" -->
+    </div>
+    <!-- END: div class="header" -->
+</header>
+
+<!-- Основной блок -->
+<main>
+    <!-- Breadcrumbs -->
+    <aside>
+        <div class="breadcrumbs">
+            <div class="container breadcrumbs-wrap">
+                <div class="breadcrumbs-text">
+                    <h1>Домашнее задание 5: Корзина</h1>
+                </div>
+                <div class="breadcrumbs-main">
+                    <!--
+                    <a href="index.html">home</a> /
+                    <a href="#">men</a> /
+                    <a href="#">new arrivals</a>
+                    -->
+                </div>
+            </div>
+            <!-- END: div class="container breadcrumbs-wrap" -->
+        </div>
+        <!-- END: div class="breadcrumbs" -->
+    </aside>
+
+    <!-- Основную часть страницы делим на левый и правый блоки -->
+    <section class="container cart-main">
+        <div class="cart-main-left">
+            <!-- Блоки с товаром, которые есть в корзине -->
+            <div class="cart-item-list">
+                <!-- Здесь динамически добавляются карточки с товаром -->
+            </div>
+            <!-- Блок с двумя кнопками -->
+            <div class="shopping-buttons">
+                <button class="shopping-buttons-btn clear-cart-btn">Очистить корзину</button>
+                <button class="shopping-buttons-btn">CONTINUE SHOPPING</button>
+            </div>
+        </div>
+        <div class="cart-main-right">
+            <!-- Форма заказа -->
+            <div class="order-form">
+                <form action="#" class="order-form-main">
+                    <h4 class="order-form-main-caption">SHIPPING ADRESS</h4>
+                    <input type="text" id="country" name="country" class="order-form-main-country" placeholder="Bangladesh" />
+                    <input type="text" id="state" name="state" class="order-form-main-zip" placeholder="State" />
+                    <input type="text" id="zip" name="zip" class="order-form-main-zip" placeholder="Postcode \ Zip" />
+                    <button type="submit" class="order-form-main-submit">GET A QUOTE</button>
+                </form>
+            </div>
+            <!-- Общая информация о заказе -->
+            <div class="order-total">
+                <p class="order-total-sub">sub total <span class="order-total-cost">$900</span></p>
+                <p class="order-total-grand">Общая стоимость заказа: <span class="order-total-cost" style="color: #F16D7F;">$900</span></p>
+                <hr />
+                <button class="order-total-btn">procced to checkout</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ВРЕМЕННО Блок с карточками товаров -->
+    <section class="products-section">
+        <div class="container products">
+            <div class="text-center">ВРЕМЕННО: для тестирования метода "Добавить в корзину"</div>
+            <!-- Блок для вывода суммарной стоимость всех товаров -->
+            <div class="text-center total-cost"></div>
+            <div class="product-items">
+                <!-- Здесь динамически добавляются карточки с товаром -->
+            </div>
+
+            <!--
+            <button class="cart-btn" type="button">Корзина</button>
+            -->
+        </div>
+        <!-- END: div class="container products" -->
+    </section>
+</main>
+
+<!-- Подвал сайта -->
+<footer>
+    <div class="footer-bottom">
+        <div class="container footer-bottom-wrap">
+            <p class="footer-bottom-text">&copy; 2021 Brand All Rights Reserved</p>
+            <div class="list-icon-footer">
+                <div class="icon-footer text-center">
+                    <img src="../images/iconFacebook.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconInstagram.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconPinterest.svg" alt="picture" />
+                </div>
+                <div class="icon-footer text-center">
+                    <img src="../images/iconTwitter.svg" alt="picture" />
+                </div>
+            </div>
+        </div>
+        <!-- END: div class="container footer-bottom-wrap" -->
+    </div>
+    <!-- END: div class="footer-bottom" -->
+</footer>
+
+<script type="module">
+    import {ProductList, ProductItem} from './js/main05.js';
+    import {Cart, ProductInCart} from './js/cart05.js';
+
+    console.log('Lesson 5');
+    console.log();
+    
+    // Ничего другого не придумал!!!
+    if (!window.cart) {
+        const cart = new Cart('.cart-item-list');
+        cart.getProductsFromServer();
+        
+        window.cart = cart;
+    }
+
+    // ВРЕМЕННО: для тестирования методов корзины
+    const productList = new ProductList('.product-items');
+</script>
+</body>
+</html>
