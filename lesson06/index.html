@@ -9,6 +9,8 @@
 </head>
 <body>
 <div id="vue-app">
+    <!-- Модальное окно с сообщением об ошибке -->
+    <error-server v-if="showErrorServer" v-on:close-modal="closeModal"></error-server>
     <!-- Шапка сайта -->
     <header>
         <div class="header">
@@ -64,10 +66,12 @@
 
         <cart v-if="showCart"
             v-on:shopping="renderCatalog"
-            v-on:update-cart="setCartList"></cart>
+            v-on:update-cart="setCartList"
+            v-bind:showerror="openModal"></cart>
         <catalog v-else
             v-on:update-catalog="setCatalogList"
-            v-on:update-cart="setCartList"></catalog>
+            v-on:update-cart="setCartList"
+            v-bind:showerror="openModal"></catalog>
     </main>
 
     <!-- Подвал сайта -->

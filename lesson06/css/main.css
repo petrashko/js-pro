@@ -257,6 +257,48 @@ div.icon-footer:not(:last-child) {
     margin-right: 0.5em;
 }
 
+/* Верстка модального окна с сообщением об ошибке */
+
+div#error-modal {
+    /*display: none;*/
+    z-index: 99;
+}
+
+.error-modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.error-modal-body {
+    position: fixed;
+    top: 3rem;
+    bottom: 3em;
+    right: 10%;
+    left: 10%;
+    /*padding: 2em 3em;*/
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: auto;
+}
+
+div.error-modal-wrap {
+    margin: 0.5rem auto 1.5rem auto;
+}
+
+.error-modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.3rem 1.5rem;
+    cursor: pointer;
+}
+
 /* Создание эффекта тряски */
 
 @keyframes shake {
