@@ -75,12 +75,12 @@ const vueApp = Vue.createApp({
                 }
                 else {
                     console.log(`${response.statusText}: ${response.status} error`);
-                    this.showerror();
+                    this.openModal();
                 }
             })
             .catch(error => {
                 console.log(error);
-                this.showerror();
+                this.openModal();
             });
             
             return promise;
@@ -104,12 +104,12 @@ const vueApp = Vue.createApp({
                 }
                 else {
                     console.log(`${response.statusText}: ${response.status} error`);
-                    this.showerror();
+                    this.openModal();
                 }
             })
             .catch(error => {
                 console.log(error);
-                this.showerror();
+                this.openModal();
             });
             
             return promise;
@@ -133,12 +133,43 @@ const vueApp = Vue.createApp({
                 }
                 else {
                     console.log(`${response.statusText}: ${response.status} error`);
-                    this.showerror();
+                    this.openModal();
                 }
             })
             .catch(error => {
                 console.log(error);
-                this.showerror();
+                this.openModal();
+            });
+            
+            return promise;
+        },
+
+        /**
+         * Метод отправляет DELETE-запросы на сервер
+         */
+        deleteJson(url) {
+            // Отправить DELETE-запрос
+            const promise = fetch(url, {
+                method: 'DELETE'
+                /*
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+                */
+            })
+            .then(response => {
+                if (response.status >= 200 && response.status < 400) {
+                    return response.json();
+                }
+                else {
+                    console.log(`${response.statusText}: ${response.status} error`);
+                    this.openModal();
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                this.openModal();
             });
             
             return promise;

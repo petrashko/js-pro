@@ -111,10 +111,25 @@ const Catalog = {
             let productInCart = this.cartList.find((item, index, srcList) => {
                 return item.id === product.id;
             });
-    
+            
             // Если такой товар уже есть в корзине
             if (productInCart) {
-                productInCart.amount++;
+                this.$parent.putJson(`/api/cart/${productInCart.id}`, {amount: 1})
+                    .then(data => {
+                        if (data.result === 1) {
+                            productInCart.amount++;
+                            
+                            this.$emit('update-cart', this.cartList);
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.showerror();
+                    });
             }
             // Иначе, добавить новый товар в корзину
             else {
@@ -122,18 +137,27 @@ const Catalog = {
                     id_product: product.id,
                     product_name: product.title,
                     price: product.price,
+                    quantity: 1
                 };
 
-                const newProductInCart = new ProductInCart(productObj);
-                this.cartList.push(newProductInCart);
+                this.$parent.postJson(`/api/cart`, productObj)
+                    .then(data => {
+                        if (data.result === 1) {
+                            const newProductInCart = new ProductInCart(productObj);
+                            this.cartList.push(newProductInCart);
+
+                            this.$emit('update-cart', this.cartList);
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.showerror();
+                    });
             }
-
-            this.$emit('update-cart', this.cartList);
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
         },
 
         getProductList() {

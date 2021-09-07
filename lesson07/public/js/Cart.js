@@ -86,24 +86,45 @@ const Cart = {
             // Найти товар в корзине
             let productInCart = this.productList.find((item, index, srcList) => {
                 return item.id === product.id;
-            });
-    
+            })
+            
             if (productInCart.amount > 1) {
-                productInCart.amount--;
+                this.$parent.putJson(`/api/cart/${productInCart.id}`, {amount: -1})
+                    .then(data => {
+                        if (data.result === 1) {
+                            productInCart.amount--;
+                            
+                            this.$emit('update-cart', this.productList);
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.showerror();
+                    });
             }
+            // Удалить товар из корзины
             else {
-                // Удалить товар из корзины
-                this.productList.splice(this.productList.indexOf(productInCart), 1);
-            }
-    
-            window.myGlobal.cartList = this.productList;
-            //console.log(window.myGlobal.cartList);
-            this.$emit('update-cart');
+                this.$parent.deleteJson(`/api/cart/product/${productInCart.id}`)
+                    .then(data => {
+                        if (data.result === 1) {
+                            this.productList.splice(this.productList.indexOf(productInCart), 1);
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+                            this.$emit('update-cart', this.productList);
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.showerror();
+                    });
+            }
         },
 
         /**
@@ -111,11 +132,19 @@ const Cart = {
          */
         onClear(ev) {
             ev.preventDefault();
-            this.productList.splice(0, this.productList.length);
             
-            window.myGlobal.cartList = this.productList;
-            //console.log(window.myGlobal.cartList);
-            this.$emit('update-cart');
+            this.$parent.deleteJson(`/api/cart/clear`)
+                    .then(data => {
+                        if (data.result === 1) {
+                            this.productList.splice(0, this.productList.length);
+                            
+                            this.$emit('update-cart', this.productList);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.showerror();
+                    });
         },
 
         getProductList() {
