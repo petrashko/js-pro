@@ -1,0 +1,18 @@
+{
+    "amount": 2050,
+    "countGoods": 2,
+    "contents": [
+        {
+            "id_product": 1,
+            "product_name": "Notebook",
+            "price": 2000,
+            "quantity": 1
+        },
+        {
+            "id_product": 4,
+            "product_name": "Gamepad",
+            "price": 50,
+            "quantity": 2
+        }
+    ]
+}
